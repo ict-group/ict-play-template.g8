@@ -2,7 +2,7 @@
   swagger: "2.0"
   info:
     title: "$name$"
-    description: "$description$"
+    description: "$title$"
     version: "$version$"
   schemes:
     - "http"
