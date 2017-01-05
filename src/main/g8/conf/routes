@@ -1,0 +1,108 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /api/schema/_code/:code                         controllers.schema.SchemaResource._code(code)
+###
+# summary: Store schema
+# description: Store schema
+# consumes:
+#   - application/json
+# parameters:
+#   - name: body
+# responses:
+#   200:
+#     description: success
+#   500:
+#     description: Unexpected error
+###
+POST    /api/schema/_code/:code                         controllers.schema.SchemaResource._set(code)
+GET     /api/schema/_uuid/:uuid/_current                controllers.record.RecordResource._uuid(entity = "schema", uuid)
+GET     /api/schema/_uuid/:uuid                         controllers.record.RecordResource._uuid(entity = "schema", uuid)
+GET     /api/schema/_lookup                             controllers.record.RecordResource._lookup(entity = "schema", res_mode: Option[String], page: Int ?= 1, page_size: Int ?= 10, sort_fields: Option[String], sort_order: Option[String], query: Option[String])
+GET     /api/schema                                     controllers.record.RecordResource.list(entity = "schema", res_mode: Option[String], page: Int ?= 1, page_size: Int ?= 10, sort_fields: Option[String], sort_order: Option[String], query: Option[String], code: Option[String], description: Option[String])
+
+GET     /api/record/:entity/_id/:id                     controllers.record.RecordResource._id(entity, id: Long)
+GET     /api/record/:entity/_code/:code                 controllers.record.RecordResource._code(entity, code)
+GET     /api/record/:entity/_uuid/:uuid/_current        controllers.record.RecordResource._uuid(entity, uuid)
+GET     /api/record/:entity/_uuid/:uuid                 controllers.record.RecordResource._uuid(entity, uuid)
+GET     /api/record/:entity/_lookup                     controllers.record.RecordResource._lookup(entity: String, res_mode: Option[String], page: Int ?= 1, page_size: Int ?= 10, sort_fields: Option[String], sort_order: Option[String], query: Option[String])
+POST    /api/record/:entity/_save                       controllers.record.RecordResource.save(entity: String)
+POST    /api/record/:entity/_update/:id                 controllers.record.RecordResource.update(entity:String, id: Long)
+GET     /api/record/:entity                             controllers.record.RecordResource.list(entity: String, res_mode: Option[String], page: Int ?= 1, page_size: Int ?= 10, sort_fields: Option[String], sort_order: Option[String], query: Option[String], code: Option[String], description: Option[String])
+POST    /api/record/:entity/_search                     controllers.record.RecordResource.list(entity: String, res_mode: Option[String], page: Int ?= 1, page_size: Int ?= 10, sort_fields: Option[String], sort_order: Option[String], query: Option[String], code: Option[String], description: Option[String])
+
+###
+# summary: Filter
+# description: Filter
+# consumes:
+#   - application/json
+# parameters:
+#   - name: body
+#     schema:
+#       \$ref: '#/definitions/models.QueryFilter'
+# responses:
+#   200:
+#     description: success
+#   500:
+#     description: Unexpected error
+###
+POST    /api/record/:entity/_filter                     controllers.record.RecordResource._filter(entity: String, res_mode: Option[String], page: Int ?= 1, page_size: Int ?= 10, sort_fields: Option[String], sort_order: Option[String], query: Option[String], code: Option[String], description: Option[String])
+###
+# summary: Store entity
+# description: Store entity
+# consumes:
+#   - application/json
+# parameters:
+#   - name: body
+# responses:
+#   200:
+#     description: success
+#   500:
+#     description: Unexpected error
+###
+POST    /api/record/:entity                             controllers.record.RecordResource.save(entity)
+###
+# summary: Update entity
+# description: Update entity
+# consumes:
+#   - application/json
+# parameters:
+#   - name: body
+# responses:
+#   200:
+#     description: success
+#   500:
+#     description: Unexpected error
+###
+PUT     /api/record/:entity/:id                         controllers.record.RecordResource.update(entity, id: Long)
+DELETE  /api/record/:entity/:id                         controllers.record.RecordResource.delete(entity, id: Long)
+
+### NoDocs ###
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+
+### NoDocs ###
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+
+### NoDocs ###
+# An example controller showing how to write asynchronous code
+GET     /message/query              controllers.AsyncController.query
+
+### NoDocs ###
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+###
+# summary: swagger definition
+# description: for swagger UI to consume
+###
+GET     /$name$/api-docs/swagger.json      @controllers.swagger.ApiSpecs.specs
+
+### NoDocs ###
+GET     /$name$/api-docs/swagger-ui/*file  controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+
+### NoDocs ###
+# Map static resources from the /public folder to the /assets URL path
+GET     /$name$/assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

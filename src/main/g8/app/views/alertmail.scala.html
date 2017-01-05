@@ -1,0 +1,19 @@
+@(title: String, message: String, result: List[Map[String, Any]])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>@title</title>
+</head>
+<body>
+  <p>@message</p>
+  <br>
+  <ul>
+  @for(r <- result) {
+    <li>@for((k, v) <- r) {
+      <b>@k.toUpperCase() :</b> @v <br/>
+    }</li><br/>
+  }
+  </ul>
+</body>
+</html>
