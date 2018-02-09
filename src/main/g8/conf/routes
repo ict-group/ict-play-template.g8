@@ -2,7 +2,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+GET     /api/schema/_generate/:code                     controllers.schema.SchemaResource._generate(code)
 GET     /api/schema/_code/:code                         controllers.schema.SchemaResource._code(code)
+GET     /api/schema/_list                               controllers.schema.SchemaResource._list()
 ###
 # summary: Store schema
 # description: Store schema
@@ -34,13 +36,13 @@ POST    /api/record/:entity/_search                     controllers.record.Recor
 
 ###
 # summary: Filter
-# description: Filter
+# description: Filters data with an ARRAY of objects like the one in the example.
 # consumes:
 #   - application/json
 # parameters:
 #   - name: body
 #     schema:
-#       \$ref: '#/definitions/models.QueryFilter'
+#       $ref: '#/definitions/models.QueryFilter'
 # responses:
 #   200:
 #     description: success
