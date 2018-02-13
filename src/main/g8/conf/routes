@@ -42,7 +42,7 @@ POST    /api/record/:entity/_search                     controllers.record.Recor
 # parameters:
 #   - name: body
 #     schema:
-#       $ref: '#/definitions/models.QueryFilter'
+#       $ref: \'#/definitions/models.QueryFilter\'
 # responses:
 #   200:
 #     description: success
