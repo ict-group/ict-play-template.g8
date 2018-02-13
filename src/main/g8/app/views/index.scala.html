@@ -10,7 +10,6 @@
 * argument is an `Html` object containing the body of the page.
 *@
 @main("$name$") {
-
     @*
     * Get an `Html` object by calling the built-in Play welcome
     * template and passing a `String` message.
@@ -18,12 +17,17 @@
     @* @play20.welcome(message, style = "Java")
     *@
     <style>
-    body{
-        font-family: "Droid Sans", sans-serif;
-    }
+            body {
+                font-family: "Droid Sans", sans-serif;
+            }
 
     </style>
-    <img rel="shortcut icon" src="@routes.Assets.versioned("images/ict.png")" style="float:left"/>
-    <h1>$name$</h1>
-    <iframe src="/$name$/api-docs/swagger-ui/index.html?url=/$name$/api-docs/swagger.json#/routes" style="border: 0px; width:100%; height:3000px">api</iframe>
+    <div>
+        <img rel="shortcut icon" src="@routes.Assets.versioned("images/ict.png")" style="float: left;
+            width: 200px;
+            height: 70px"/>
+    </div>
+    <iframe src="/api-docs/swagger-ui/index.html?url=/api-docs/swagger.json#/routes" style="border: 0px;
+        width: 100%;
+        height: 3000px">api</iframe>
 }
